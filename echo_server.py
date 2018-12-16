@@ -6,7 +6,7 @@
 # 1) add --experimental to ExecStart in /lib/systemd/system/bluetooth.service 
 # 2) copy the following xml file into /etc/dbus-1/system.d/
 # 3) apt-get install libdbus-1-dev libdbus-glib-1-dev python3-gi
-# 4) pip3 install dbus-python and bluezero
+# 4) pip3 install dbus-python bluezero
 
 """
 <?xml version="1.0" encoding="UTF-8"?>
@@ -25,8 +25,6 @@
 
 import os
 import dbus
-from gi.repository import GObject
-# should I use pygobject instead?
 
 # bluezero
 
