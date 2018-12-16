@@ -96,7 +96,6 @@ class UartTxChrc(localGATT.Characteristic):
         self.chrc.update(value)
 
 
-
 class ble:
     def __init__(self):
         self.bus = dbus.SystemBus()
