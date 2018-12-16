@@ -23,7 +23,6 @@
 </busconfig>
 """
 
-import os
 import dbus
 
 # bluezero
