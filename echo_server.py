@@ -1,12 +1,35 @@
-# Copyright (c) 2017 roseengineering
+#!/usr/bin/python3
+# Copyright (c) 2017,2018 roseengineering
+
+# 12/16/2018:
+# remember to
+# 1) add --experimental to ExecStart in /lib/systemd/system/bluetooth.service 
+# 2) copy the following xml file into /etc/dbus-1/system.d/
+# 3) apt-get install libdbus-1-dev libdbus-glib-1-dev python3-gi
+# 4) pip3 install dbus-python and bluezero
+
+"""
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE busconfig PUBLIC 
+ "-//freedesktop//DTD D-BUS Bus Configuration 1.0//EN"
+ "http://www.freedesktop.org/standards/dbus/1.0/busconfig.dtd">
+<busconfig>
+  <policy context="default">
+    <allow own="ukBaz.bluezero"/>
+    <allow send_destination="ukBaz.bluezero"
+           send_interface="org.freedesktop.DBus.Introspectable"/>
+    <allow send_type="method_call" log="true"/>
+  </policy>
+</busconfig>
+"""
 
 import os
 import dbus
 from gi.repository import GObject
+# should I use pygobject instead?
 
 # bluezero
 
-from bluezero import dbus_tools
 from bluezero import constants
 from bluezero import adapter
 from bluezero import advertisement
@@ -104,7 +127,7 @@ class ble:
 
 
 if __name__ == '__main__':
-    pi_cpu_monitor = ble()
-    dbus_tools.start_mainloop()
+    echo_server = ble()
+    echo_server.app.start()
 
 
