@@ -21,14 +21,35 @@ being sent back to the client.
 
 To run the echo service executing the following is enough:
 
+```
      $ sudo python3 echo_server.py
+```
 
 The client, ping.py, can be used to test the echo server.
 Run it as root and it will send the same message over and over to the
 BLE peripheral with the mac address given on the command line.  All BLE UART responses will be printed back.  
 For example to ping the echo service on B8:27:EB:08:5E:F3 run:
 
+```
      $ sudo python3 ping.py B8:27:EB:08:5E:F3
+```
+
+remote server
+-----------------
+
+The remote.py server takes a list of commands, each a line in a file, and
+remotely executes them on the BLE server.  The server uses the control
+pad feature of the Adafruit LE Connect App to run the commands.
+
+The up arrow runs the current command. The down arrow kills the process
+if running.  The left and right rotates through the command list to
+set the current command.  For example:
+
+```
+     $ sudo python3 remote.py remote.txt
+```
+
+
 
 MQTT proxy server
 -----------------
@@ -117,4 +138,4 @@ To create a MQTT queue, you can install mosquitto.
 Append the line "listener 1883" to 
 /etc/mosquitto/mosquitto.conf to make the queue public.
 
-- Copyright (c) 2017 roseengineering
+- Copyright (c) 2017,2018 roseengineering
