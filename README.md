@@ -114,7 +114,7 @@ Dependencies
 
 Install the following to run a BLE peripheral server.
 
-     sudo apt-get upgrade -y   # to get new bluetooth mac address on pi
+     sudo rpi-update   # optional, gets a new bluetooth mac address
      sudo apt-get install python3-dev
      sudo apt-get install libdbus-1-dev
      sudo apt-get install libdbus-glib-1-dev
